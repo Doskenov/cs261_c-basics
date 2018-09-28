@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "student.h"
+
 
 /* A function prototype. */
 void foo(int x);
@@ -28,7 +30,7 @@ int main(int argc, char** argv) {
     * string.  The command line argument itself is a string (i.e. a char*),
     * so we use %s as its placeholder.
     */
-    for (i = 0; i < argc; i++) {
+    for (i = 0; i < arg; i++) {
         printf("== argv[%8d]: %s\n", i, argv[i]);
     }
 
@@ -36,6 +38,19 @@ int main(int argc, char** argv) {
     foo(2);
     foo(4);
     foo(8);
+
+    /*
+     * Instantiating a student struct and initializing it using a designated
+     * initializer.
+     */
+    struct student s = {.name = "Luke Skywalker", .id = 933111111};
+
+    /* We could also set the values of our struct like this. */
+    // s.name = "Luke Skywalker";
+    // s.id = 933111111;
+    s.gpa = 4.0;
+
+    printf("== %s (%d): %f\n", s.name, s.id, s.gpa);
 
     return 0;
 }
